@@ -25,5 +25,12 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (other.tag == "Player")
+        {
+            Player p = other.GetComponent<Player>();
+            p.takeDamage(damage);
+            Destroy(this.gameObject);
+        }
     }
 }

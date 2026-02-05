@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109d099cb7d8240fa96307274a917244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  damage: 0
+  damage: 1
   minSpeed: 2
   maxSpeed: 5
 --- !u!58 &5922008862307936802

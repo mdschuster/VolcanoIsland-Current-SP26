@@ -4,6 +4,9 @@ public class Spawner : MonoBehaviour
 {
     
     public float timeBetweenSpawn;
+    public float minSpawnTime;
+    public float decreaseAmt;
+    private float currentSpawnTime;
     private float timer;
 
     public GameObject Enemy;
@@ -11,6 +14,7 @@ public class Spawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentSpawnTime = timeBetweenSpawn;
         timer = 0;
     }
 
@@ -24,8 +28,14 @@ public class Spawner : MonoBehaviour
             //instantiate the object
             Instantiate(Enemy, location, Quaternion.identity);
             
+            currentSpawnTime -= decreaseAmt;
+            if (currentSpawnTime < minSpawnTime)
+            {
+                currentSpawnTime = minSpawnTime;
+            }
+            
             //reset the timer
-            timer = timeBetweenSpawn;
+            timer = currentSpawnTime;
             
         }
         else
@@ -33,4 +43,11 @@ public class Spawner : MonoBehaviour
             timer -= Time.deltaTime;
         }
     }
+
+    public void reset()
+    {
+        currentSpawnTime = timeBetweenSpawn;
+    }
+    
+    
 }
