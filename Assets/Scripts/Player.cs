@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public int maxHealth;
     private int currentHealth;
     private Rigidbody2D rb;
+    private Animator anim;
     private Vector2 input;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     {
         currentHealth=maxHealth;
         rb=GetComponent<Rigidbody2D>();
+        anim=GetComponent<Animator>();
     }
 
     public void OnMove(InputValue value)
@@ -26,6 +28,19 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 movement = new Vector2(input.x * speed, rb.linearVelocity.y);
+        if(movement.magnitude>0) anim.SetBool("isRunning",true);
+        else  anim.SetBool("isRunning",false);
+        if (movement.x > 0)//right
+        {
+            transform.eulerAngles = new Vector3(0,0,0);
+        }
+
+        if (movement.x < 0) //left
+        {
+            transform.eulerAngles = new Vector3(0,180,0);
+
+        }
+
         rb.linearVelocity = movement;
     }
 

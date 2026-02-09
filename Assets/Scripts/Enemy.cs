@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
     public int damage;
     public float minSpeed;
     public float maxSpeed;
+    public GameObject explostionFX;
 
     private float speed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Ground")
         {
+            Instantiate(explostionFX, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
 
