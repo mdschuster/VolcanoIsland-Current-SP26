@@ -55,11 +55,13 @@ public class Player : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth-=damage;
+        GameManager.instance().updateHealthText(currentHealth);
         if(currentHealth<=0)
         {
             //play a sound
             //play a particle effect
             //display gameover UI
+            GameManager.instance().deathCanvasSwitch(true);
             this.gameObject.SetActive(false);
         }
     }
