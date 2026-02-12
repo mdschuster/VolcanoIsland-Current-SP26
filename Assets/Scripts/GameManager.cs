@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class GameManager : MonoBehaviour
     public void updateHealthText(int value)
     {
         healthText.text = "x"+value.ToString();
+    }
+    
+    public void onMenuClick()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
     
 }
